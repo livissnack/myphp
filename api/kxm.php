@@ -15,9 +15,11 @@ if(!$ts){
   if($id=='xmyd'){
     header('Content-Type: application/vnd.apple.mpegurl');
     print_r(preg_replace("/(.*?.ts)/i","http://".$_SERVER[HTTP_HOST].$_SERVER[PHP_SELF]."?ts=$burl$1",m3u8($live)));
+    var_dump('111');die();
     } else {
       header('Content-Type: application/vnd.apple.mpegurl');
       print_r(preg_replace("/\.\.\/\.\.\//", "", preg_replace("/(.*?.ts)/i","http://".$_SERVER[HTTP_HOST].$_SERVER[PHP_SELF]."?ts=$burl$1",m3u8($live))));
+      die();
       }
 } else {
       $data = ts($ts);
