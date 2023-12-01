@@ -10,7 +10,7 @@
         $con = stream_context_create(['http'=>['method'=>"GET",'header'=>["Referer: https://www.katyusha.tv",]]]);
         $cur = file_get_contents($live, null, $con);
         header('Content-Type: application/vnd.apple.mpegurl');
-        print_r(preg_replace("/(.*?.ts)/i", "https://".$_SERVER ['HTTP_HOST'].$_SERVER['PHP_SELF']."?ts=$burl$1",$cur));
+        print_r(preg_replace("/(.*?.ts)/i", "http://".$_SERVER ['HTTP_HOST'].$_SERVER['PHP_SELF']."?ts=$burl$1",$cur));
     } else {
         $data = get($ts);
         header('Content-Type: video/MP2T');
