@@ -1,5 +1,5 @@
 <?php
-    $id = $_GET['id'];
+    $id = $_GET['id'] ?? 'zhonghe';
     $programs = [
         'zhonghe' => 0,     //广州综合
         'xinwen' => 1,      //广州新闻
@@ -9,13 +9,11 @@
         'shenghuo' => 5,    //广州南国都市
     ];
     $url = 'https://gzbn.gztv.com:7443/plus-cloud-manage-app/liveChannel/queryLiveChannelList?type=1';
-    $headers = [    
-        'Accept: application/json, text/plain, */*',
-        'Accept-Encoding: gzip, deflate, br',
-        'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8',
-        'Connection: keep-alive',
-        'Host: gzbn.gztv.com:7443',
-        'Origin: https://gzbn.gztv.com',
+    $headers = [
+        'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/99.0.4844.84 Safari/537.36 HBPC/12.1.3.3',
+        'Host: gzbn.gztv.com',
+        'Origin: gzbn.gztv.com',
+        'Referer: gzbn.gztv.com',
     ];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -24,8 +22,8 @@
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     $data = curl_exec($ch);
     curl_close($ch);
-    $re = json_decode($data)->data;
-    $program = $programs[$id];
-    $playUrl = $program['httpUrl'] ?? '';
+    $result = json_decode($data)->data;
+    $index = $programs[$id];
+    $playUrl = $result[$index]->httpUrl ?? '';
     header('location:'.$playUrl);
 ?>
