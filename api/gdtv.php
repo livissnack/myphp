@@ -3,9 +3,9 @@
     $programs = [
         'zhonghe' => 0,     //广州综合
         'xinwen' => 1,      //广州新闻
-        'jingsai' => 2,     //广州竞赛
-        'yingshi' => 3,     //广州影视
-        'fazhi' => 4,       //广州法治
+        'fazhi' => 2,     //广州法治
+        'jingsai' => 3,     //广州竞赛
+        'yingshi' => 4,       //广州影视
         'shenghuo' => 5,    //广州南国都市
     ];
     $url = 'https://gzbn.gztv.com:7443/plus-cloud-manage-app/liveChannel/queryLiveChannelList?type=1';
